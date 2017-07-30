@@ -1,4 +1,4 @@
-package com.websystique.springmvc.model;
+package com.websystique.springmvc.model.enums;
 
 public enum UserProfileType {
 	USER("USER"),

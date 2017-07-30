@@ -1,4 +1,4 @@
-package com.websystique.springmvc.model;
+package com.websystique.springmvc.model.enums;
 
 /**
  * Created by sevak on 7/30/17.

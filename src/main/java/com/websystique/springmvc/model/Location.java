@@ -1,5 +1,8 @@
 package com.websystique.springmvc.model;
 
+import com.websystique.springmvc.model.enums.Country;
+import com.websystique.springmvc.model.enums.Region;
+
 import javax.persistence.*;
 
 /**
@@ -13,15 +16,15 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Enumerated
-    @Column(name = "COUNTRY")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "COUNTRY", nullable = false)
     private Country country;
 
-    @Enumerated
-    @Column(name = "REGION")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "REGION",nullable = false)
     private Region region;
 
-    @Column(name = "ADDRESS")
+    @Column(name = "ADDRESS", nullable = false)
     private String address;
 
     public Country getCountry() {

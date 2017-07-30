@@ -1,22 +1,27 @@
 package com.websystique.springmvc.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by sevak on 7/30/17.
  */
 @Entity
-@Table(name = "SKILL_CATEGORY")
+@Table(name = "skill_category")
 public class SkillCategory {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "CATEGORY_NAME")
+    @Column(name = "category_name")
     private String categoryName;
 
-    @Column(name = "PARENT_ID")
+    @Column(name = "parent_id")
     private  Long parentId;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "skill_category_id")
+    private Set<Skill> skills;
 
     public Long getId() {
         return id;

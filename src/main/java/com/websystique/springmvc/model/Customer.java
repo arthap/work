@@ -12,10 +12,10 @@ public class Customer {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "USER_PROFILE_ID")
-    private Long userProfileId;
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private UserProfile userProfile;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Location location;
 
     public Long getId() {
@@ -26,19 +26,19 @@ public class Customer {
         this.id = id;
     }
 
-    public Long getUserProfileId() {
-        return userProfileId;
-    }
-
-    public void setUserProfileId(Long userProfileId) {
-        this.userProfileId = userProfileId;
-    }
-
     public Location getLocation() {
         return location;
     }
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
     }
 }

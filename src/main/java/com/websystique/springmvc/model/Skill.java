@@ -1,23 +1,24 @@
 package com.websystique.springmvc.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by sevak on 7/30/17.
  */
 @Entity
-@Table(name = "SKILLS")
+@Table(name = "skills")
 public class Skill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column (name = "SKILL_NAME")
+    @Column (name = "skill_name")
     private String skillName;
 
-//    private SkillCategory skillCategory;
-
+    @Column( name = "skill_category_id", nullable = false)
+    private Long skillCategoryId;
 
     public Long getId() {
         return id;
@@ -33,5 +34,13 @@ public class Skill {
 
     public void setSkillName(String skillName) {
         this.skillName = skillName;
+    }
+
+    public Long getSkillCategoryId() {
+        return skillCategoryId;
+    }
+
+    public void setSkillCategoryId(Long skillCategoryId) {
+        this.skillCategoryId = skillCategoryId;
     }
 }

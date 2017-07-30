@@ -2,6 +2,7 @@ package com.websystique.springmvc.model;
 
 import javax.persistence.*;
 
+import com.websystique.springmvc.model.enums.UserProfileType;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import java.util.Date;
@@ -30,13 +31,15 @@ public class UserProfile {
     @Column(name = "EMAIL", nullable = false)
     private String email;
 
-    @Column(name = "AVATAR")
+    @Column(name = "AVATAR", nullable = false)
     private String profileImagePath;
 
     @Temporal(TemporalType.DATE)
+    @Column(name = "CREATED_AT", nullable = false)
     private Date createdAt;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "USER_PROFILE_TYPE")
     private UserProfileType userProfileType;
 
     public Long getId() {

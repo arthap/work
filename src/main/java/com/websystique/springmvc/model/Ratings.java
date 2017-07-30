@@ -18,6 +18,9 @@ public class Ratings {
     @Column(name = "RATING")
     private Integer rating;
 
+    @Column(name = "worker_id")
+    private Long workerId;
+
     public Long getId() {
         return id;
     }
@@ -41,5 +44,13 @@ public class Ratings {
 
     public void setUserProfileId(Long userProfileId) {
         this.userProfileId = userProfileId;
+    }
+
+    public Long getWorkerId() {
+        return workerId;
+    }
+
+    public void setWorkerId(Long workerId) {
+        this.workerId = workerId;
     }
 }

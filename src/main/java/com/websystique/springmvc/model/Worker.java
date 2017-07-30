@@ -14,16 +14,26 @@ public class Worker {
     @Id @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "USER_PROFILE_ID")
-    private Long userProfileId;
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private UserProfile userProfile;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Location location;
 
-//    private Set<Skill> skills;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "worker_skills", joinColumns = {
+            @JoinColumn(name = "worker_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "skill_id",
+                    nullable = false, updatable = false) })
+    private Set<Skill> skills;
 
-//    private Set<Photo> photos;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "WORKER_ID")
+    private Set<Photo> photos;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "WORKER_ID")
+    private Set<Ratings> ratings;
 
     public Long getId() {
         return id;
@@ -33,19 +43,35 @@ public class Worker {
         this.id = id;
     }
 
-    public Long getUserProfileId() {
-        return userProfileId;
-    }
-
-    public void setUserProfileId(Long userProfileId) {
-        this.userProfileId = userProfileId;
-    }
-
     public Location getLocation() {
         return location;
     }
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
+
+    public Set<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Set<Skill> skills) {
+        this.skills = skills;
+    }
+
+    public Set<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(Set<Photo> photos) {
+        this.photos = photos;
     }
 }
