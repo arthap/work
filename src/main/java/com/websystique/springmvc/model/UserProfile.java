@@ -1,75 +1,107 @@
 package com.websystique.springmvc.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import java.util.Date;
 
 @Entity
-@Table(name="USER_PROFILE")
+@Table(name = "USERS_PROFILE")
 public class UserProfile {
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;	
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	@Column(name="TYPE", length=15, unique=true, nullable=false)
-	private String type = UserProfileType.USER.getUserProfileType();
-	
-	public Integer getId() {
-		return id;
-	}
+    @NotEmpty
+    @Column(name = "PASSWORD", nullable = false)
+    private String password;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @NotEmpty
+    @Column(name = "FIRST_NAME", nullable = false)
+    private String firstName;
 
-	public String getType() {
-		return type;
-	}
+    @NotEmpty
+    @Column(name = "LAST_NAME", nullable = false)
+    private String lastName;
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    @NotEmpty
+    @Column(name = "EMAIL", nullable = false)
+    private String email;
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		return result;
-	}
+    @Column(name = "AVATAR")
+    private String profileImagePath;
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (!(obj instanceof UserProfile))
-			return false;
-		UserProfile other = (UserProfile) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (type == null) {
-			if (other.type != null)
-				return false;
-		} else if (!type.equals(other.type))
-			return false;
-		return true;
-	}
+    @Temporal(TemporalType.DATE)
+    private Date createdAt;
 
-	@Override
-	public String toString() {
-		return "UserProfile [id=" + id + ", type=" + type + "]";
-	}
+    @Enumerated(EnumType.STRING)
+    private UserProfileType userProfileType;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
 
+    public UserProfileType getUserProfileType() {
+        return userProfileType;
+    }
+
+    public void setUserProfileType(UserProfileType userProfileType) {
+        this.userProfileType = userProfileType;
+    }
+
+    public String getProfileImagePath() {
+        return profileImagePath;
+    }
+
+    public void setProfileImagePath(String profileImagePath) {
+        this.profileImagePath = profileImagePath;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 }
