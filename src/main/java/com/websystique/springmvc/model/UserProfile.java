@@ -1,48 +1,45 @@
 package com.websystique.springmvc.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
+
 import com.websystique.springmvc.model.enums.UserProfileType;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "USERS_PROFILE")
-public class UserProfile   implements Serializable {
-    private static final long serialVersionUID = 1L;
+@Table(name = "users_profile")
+public class UserProfile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotEmpty
-    @Column(name = "PASSWORD", nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
     @NotEmpty
-    @Column(name = "FIRST_NAME", nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
     @NotEmpty
-    @Column(name = "LAST_NAME", nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @NotEmpty
-    @Column(name = "EMAIL", nullable = false)
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "AVATAR", nullable = false)
+    @Column(name = "avatar", nullable = false)
     private String profileImagePath;
 
-    @JsonIgnore
     @Temporal(TemporalType.DATE)
-    @Column(name = "CREATED_AT", nullable = false)
+    @Column(name = "created_at", nullable = false)
     private Date createdAt;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "USER_PROFILE_TYPE")
+    @Column(name = "user_profile_type")
     private UserProfileType userProfileType;
 
     public Long getId() {
