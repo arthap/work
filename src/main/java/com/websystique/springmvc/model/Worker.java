@@ -15,13 +15,13 @@ public class Worker {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private UserProfile userProfile;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Location location;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "worker_skills", joinColumns = {
             @JoinColumn(name = "worker_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "skill_id",

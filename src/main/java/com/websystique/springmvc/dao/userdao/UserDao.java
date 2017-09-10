@@ -1,4 +1,4 @@
-package com.websystique.springmvc.dao;
+package com.websystique.springmvc.dao.userdao;
 
 import com.websystique.springmvc.model.UserProfile;
 

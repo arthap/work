@@ -1,6 +1,6 @@
-package com.websystique.springmvc.service;
+package com.websystique.springmvc.service.userservice;
 
-import com.websystique.springmvc.dao.UserDao;
+import com.websystique.springmvc.dao.userdao.UserDao;
 import com.websystique.springmvc.model.UserProfile;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

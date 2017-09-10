@@ -1,7 +1,7 @@
 package com.websystique.springmvc.controller;
 
 import com.websystique.springmvc.model.UserProfile;
-import com.websystique.springmvc.service.UserService;
+import com.websystique.springmvc.service.userservice.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

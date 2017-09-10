@@ -1,4 +1,4 @@
-package com.websystique.springmvc.service;
+package com.websystique.springmvc.service.userservice;
 
 import com.websystique.springmvc.model.UserProfile;
 import org.springframework.http.ResponseEntity;
