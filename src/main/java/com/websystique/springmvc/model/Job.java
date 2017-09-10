@@ -1,15 +1,8 @@
 package com.websystique.springmvc.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by sevak on 9/10/17.
@@ -28,20 +21,15 @@ public class Job {
     @ManyToOne
     private Skill mainSkill;
 
-    @Column(name = "description")
-    private String description;
-
     @Temporal(TemporalType.DATE)
     @Column(name = "start_date")
     private Date startDate;
+
     @Column(name = "job_title")
     private String jobTitle;
 
     @Column(name = "job_description")
     private String jobDescription;
-
-    @ManyToOne
-    private Customer customer;
 
     @OneToMany
     private Set<Proposal> proposals;
@@ -84,12 +72,6 @@ public class Job {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 
     public Skill getMainSkill() {
@@ -100,13 +82,6 @@ public class Job {
         this.mainSkill = mainSkill;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public Date getStartDate() {
         return startDate;
