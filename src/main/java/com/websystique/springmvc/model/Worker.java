@@ -8,10 +8,11 @@ import java.util.Set;
  * Created by sevak on 7/30/17.
  */
 @Entity
-@Table(name = "WORKERS")
+@Table(name = "workers")
 public class Worker {
 
-    @Id @GeneratedValue (strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -22,9 +23,9 @@ public class Worker {
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "worker_skills", joinColumns = {
-            @JoinColumn(name = "worker_id", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "skill_id",
-                    nullable = false, updatable = false) })
+            @JoinColumn(name = "worker_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "skill_id",
+                    nullable = false, updatable = false)})
     private Set<Skill> skills;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

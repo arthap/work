@@ -38,16 +38,6 @@
       <property name="caretWidth" class="java.lang.Integer" />
     </properties>
   </component>
-  <component name="EclipseCodeFormatter">
-    <option name="defaultSettings" value="true" />
-    <option name="formatter" value="ECLIPSE" />
-    <option name="id" value="1497860168883" />
-    <option name="importOrderConfigFilePath" value="$USER_HOME$/Documents/IHG/eclipseImportOrder.importorder" />
-    <option name="importOrderFromFile" value="true" />
-    <option name="name" value="default" />
-    <option name="pathToConfigFileJava" value="$USER_HOME$/Documents/IHG/eclipseCodeFormatter.xml" />
-    <option name="selectedJavaProfile" value="Endeavor" />
-  </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>

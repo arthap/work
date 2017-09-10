@@ -1,15 +1,17 @@
 package com.websystique.springmvc.model;
 
-import javax.persistence.*;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.websystique.springmvc.model.enums.UserProfileType;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "USERS_PROFILE")
-public class UserProfile {
+public class UserProfile   implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,6 +36,7 @@ public class UserProfile {
     @Column(name = "AVATAR", nullable = false)
     private String profileImagePath;
 
+    @JsonIgnore
     @Temporal(TemporalType.DATE)
     @Column(name = "CREATED_AT", nullable = false)
     private Date createdAt;
