@@ -1,0 +1,16 @@
+package com.websystique.springmvc.model.enums;
+
+public enum TenderProcedureType {
+    SPECIFIC_CONTRACT,
+    ACCELERATED_RESTRICTED,
+    SIMPLIFIED,
+    NEGOTIATED_WITH_ADV,
+    ACCELERATED_NEGOTIATED,
+    FA,
+    OPEN,
+    RESTRICTED,
+    SIMPLIFIED_NEW,
+    NEGOTIATED,
+    NEGOTIATED_WITHOUT_ADV,
+    COMPETITIVE_DIALOGUE
+}
