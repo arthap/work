@@ -1,7 +1,6 @@
 package com.websystique.springmvc.dao.workerdao;
 
 import com.websystique.springmvc.dao.AbstractDao;
-import com.websystique.springmvc.model.UserProfile;
 import com.websystique.springmvc.model.Worker;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
