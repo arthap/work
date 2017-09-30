@@ -1,6 +1,5 @@
 package com.websystique.springmvc.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.websystique.springmvc.model.enums.UserProfileType;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -36,7 +35,6 @@ public class UserProfile   implements Serializable {
     @Column(name = "AVATAR", nullable = false)
     private String profileImagePath;
 
-    @JsonIgnore
     @Temporal(TemporalType.DATE)
     @Column(name = "CREATED_AT", nullable = false)
     private Date createdAt;

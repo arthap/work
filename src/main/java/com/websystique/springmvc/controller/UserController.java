@@ -6,13 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import sun.misc.Contended;
 
 import java.util.Date;
-
-import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 /**
  * Created by sevak on 9/10/17.
