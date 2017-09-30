@@ -7,7 +7,7 @@ import java.util.Set;
  * Created by sevak on 7/30/17.
  */
 @Entity
-@Table(name = "CUSTOMERS")
+@Table(name = "customers")
 public class Customer {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,6 +18,10 @@ public class Customer {
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Location location;
+
+    @OneToMany
+    @JoinColumn(name = "customer")
+    private Set<Job> jobs;
 
     public Long getId() {
         return id;
@@ -41,5 +45,13 @@ public class Customer {
 
     public void setUserProfile(UserProfile userProfile) {
         this.userProfile = userProfile;
+    }
+
+    public Set<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(Set<Job> jobs) {
+        this.jobs = jobs;
     }
 }
