@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Component
 @RestController
-
+@RequestMapping(value = "/api")
 public class PhotosController {
 
     @RequestMapping(value = "/login")
