@@ -13,10 +13,10 @@ public class Photo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "IMAGE_URL")
+    @Column(name = "image_url")
     private String imageUrl;
 
-    @Column(name = "WORKER_ID")
+    @Column(name = "worker_id")
     private Long workerId;
 
     public Long getId() {

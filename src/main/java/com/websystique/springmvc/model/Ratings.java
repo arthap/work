@@ -6,16 +6,16 @@ import javax.persistence.*;
  * Created by sevak on 7/30/17.
  */
 @Entity
-@Table(name = "RATINGS")
+@Table(name = "ratings")
 public class Ratings {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "USER_PROFILE_ID")
+    @Column(name = "user_profile_id")
     private Long userProfileId;
 
-    @Column(name = "RATING")
+    @Column(name = "rating")
     private Integer rating;
 
     @Column(name = "worker_id")

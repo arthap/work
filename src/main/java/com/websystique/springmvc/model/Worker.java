@@ -29,11 +29,11 @@ public class Worker {
     private Set<Skill> skills;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "WORKER_ID")
+    @JoinColumn(name = "worker_id")
     private Set<Photo> photos;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "WORKER_ID")
+    @JoinColumn(name = "worker_id")
     private Set<Ratings> ratings;
 
     public Long getId() {
