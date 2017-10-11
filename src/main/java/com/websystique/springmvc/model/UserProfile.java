@@ -6,6 +6,7 @@ import com.websystique.springmvc.model.enums.UserProfileType;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "users_profile")
@@ -41,6 +42,12 @@ public class UserProfile {
     @Enumerated(EnumType.STRING)
     @Column(name = "user_profile_type")
     private UserProfileType userProfileType;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_authority",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
+    private List<Authority> authorities;
 
     public Long getId() {
         return id;

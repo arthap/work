@@ -31,7 +31,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("TITLE")
                 .description("DESCRIPTION")
-                .version("VERSION")
+                .version("0.1")
                 .termsOfServiceUrl("http://terms-of-services.url")
                 .license("LICENSE")
                 .licenseUrl("http://url-to-license.com")
