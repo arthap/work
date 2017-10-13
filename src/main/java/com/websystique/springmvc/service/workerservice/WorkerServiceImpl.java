@@ -1,6 +1,7 @@
 package com.websystique.springmvc.service.workerservice;
 
-import com.websystique.springmvc.dao.workerdao.WorkerDao;import com.websystique.springmvc.model.Worker;
+import com.websystique.springmvc.dao.workerdao.WorkerDao;
+import com.websystique.springmvc.model.Worker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import java.util.List;
  * Created by sevak on 9/10/17.
  */
 @Service
-public class WorkerServiceImpl implements WorkerService{
+public class WorkerServiceImpl implements WorkerService {
 
     @Autowired
     private WorkerDao workerDao;
@@ -22,11 +23,6 @@ public class WorkerServiceImpl implements WorkerService{
     @Override
     public Worker getById(Long id) {
         return workerDao.getById(id);
-    }
-
-    @Override
-    public Worker getByEmail(String email){
-        return workerDao.getByEmail(email);
     }
 
     @Override
@@ -46,7 +42,7 @@ public class WorkerServiceImpl implements WorkerService{
     @Override
     @Transactional
     public ResponseEntity<Worker> delete(long id) {
-        Worker  worker = getById(id);
+        Worker worker = getById(id);
         if (worker == null) {
             return new ResponseEntity<Worker>(HttpStatus.NOT_FOUND);
         }
@@ -58,7 +54,7 @@ public class WorkerServiceImpl implements WorkerService{
     @Transactional
     public ResponseEntity<Worker> update(long id, Worker worker) {
         Worker currentWorker = getById(id);
-        if (currentWorker==null){
+        if (currentWorker == null) {
             return new ResponseEntity<Worker>(HttpStatus.NOT_FOUND);
         }
         worker.setId(id);
