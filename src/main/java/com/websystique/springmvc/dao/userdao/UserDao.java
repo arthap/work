@@ -18,4 +18,6 @@ public interface UserDao {
     void deleteUserProfile(UserProfile userProfile);
 
     void updateUserProfile(UserProfile userProfile);
+
+    UserProfile getUserByEmail(String email);
 }

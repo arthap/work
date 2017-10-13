@@ -4,7 +4,6 @@ import com.websystique.springmvc.dao.AbstractDao;
 import com.websystique.springmvc.model.Worker;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
-
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -18,6 +17,14 @@ public class WorkerDaoImpl extends AbstractDao<Long, Worker> implements WorkerDa
     public Worker getById(Long id) {
         Session session = openSession();
         Worker worker = (Worker) session.get(Worker.class, id);
+        closeSession(session);
+        return worker;
+    }
+
+    @Override
+    public Worker getByEmail(String email){
+        Session session = openSession();
+        Worker worker = (Worker) session.get(Worker.class,email);
         closeSession(session);
         return worker;
     }

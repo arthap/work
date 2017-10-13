@@ -11,6 +11,8 @@ public interface WorkerDao {
 
     Worker getById(Long id);
 
+    Worker getByEmail(String email);
+
     void create(Worker worker);
 
     List<Worker> getAll();

@@ -3,6 +3,7 @@ package com.websystique.springmvc.model;
 import javax.persistence.*;
 
 import com.websystique.springmvc.model.enums.UserProfileType;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import java.util.Date;

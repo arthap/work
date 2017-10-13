@@ -13,6 +13,8 @@ import java.util.List;
 public interface WorkerService {
     Worker getById(Long id);
 
+    Worker getByEmail(String email);
+
     void create(Worker worker);
 
     ResponseEntity<List<Worker>> getAll();
