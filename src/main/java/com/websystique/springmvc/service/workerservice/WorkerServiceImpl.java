@@ -25,6 +25,11 @@ public class WorkerServiceImpl implements WorkerService{
     }
 
     @Override
+    public Worker getByEmail(String email){
+        return workerDao.getByEmail(email);
+    }
+
+    @Override
     public void create(Worker worker) {
         workerDao.create(worker);
     }

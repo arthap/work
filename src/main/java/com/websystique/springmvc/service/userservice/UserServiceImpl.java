@@ -35,6 +35,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserProfile getUserByEmail(String email) {
+        return userDao.getUserByEmail(email);
+    }
+
+    @Override
     public ResponseEntity<List<UserProfile>> getAll() {
         List<UserProfile> users = userDao.getAll();
         if (users.isEmpty()) {

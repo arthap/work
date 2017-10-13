@@ -28,6 +28,14 @@ public class UserDaoImpl extends AbstractDao<Long,UserProfile> implements UserDa
     }
 
     @Override
+    public UserProfile getUserByEmail(String email){
+        Session session = openSession();
+        UserProfile userProfile = (UserProfile) session.get(UserProfile.class,email);
+        closeSession(session);
+        return userProfile;
+    }
+
+    @Override
     public List<UserProfile> getAll() {
         Session session = openSession();
         List<UserProfile> userProfiles = session.createCriteria(UserProfile.class).list();

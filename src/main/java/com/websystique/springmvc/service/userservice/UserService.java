@@ -16,6 +16,8 @@ public interface UserService {
 
      UserProfile getById(Long id);
 
+     UserProfile getUserByEmail(String email);
+
      ResponseEntity<List<UserProfile>> getAll () ;
 
      ResponseEntity<UserProfile> delete ( Long id);
