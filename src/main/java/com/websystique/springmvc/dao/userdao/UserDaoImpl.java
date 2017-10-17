@@ -2,7 +2,9 @@ package com.websystique.springmvc.dao.userdao;
 
 import com.websystique.springmvc.dao.AbstractDao;
 import com.websystique.springmvc.model.UserProfile;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.List;
  * Created by sevak on 9/10/17.
  */
 @Repository
-public class UserDaoImpl extends AbstractDao<Long,UserProfile> implements UserDao {
+public class UserDaoImpl extends AbstractDao<Long, UserProfile> implements UserDao {
 
 
     public void create(UserProfile userProfile) {
@@ -20,7 +22,7 @@ public class UserDaoImpl extends AbstractDao<Long,UserProfile> implements UserDa
 
 
     @Override
-    public UserProfile getById(Long id){
+    public UserProfile getById(Long id) {
         Session session = openSession();
         UserProfile userProfile = (UserProfile) session.get(UserProfile.class, id);
         closeSession(session);
@@ -28,11 +30,10 @@ public class UserDaoImpl extends AbstractDao<Long,UserProfile> implements UserDa
     }
 
     @Override
-    public UserProfile getUserByEmail(String email){
+    public UserProfile getUserByEmail(String email) {
         Session session = openSession();
-        UserProfile userProfile = (UserProfile) session.get(UserProfile.class,email);
-        closeSession(session);
-        return userProfile;
+        Criteria criteria = session.createCriteria(UserProfile.class);
+        return (UserProfile) criteria.add(Restrictions.eq("email", email)).uniqueResult();
     }
 
     @Override
