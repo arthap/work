@@ -2,12 +2,16 @@ package com.websystique.springmvc.dao.userdao;
 
 import com.websystique.springmvc.dao.AbstractDao;
 import com.websystique.springmvc.model.UserProfile;
+import com.websystique.springmvc.model.enums.UserProfileType;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sevak on 9/10/17.

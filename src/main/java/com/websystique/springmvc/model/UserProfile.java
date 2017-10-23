@@ -56,6 +56,32 @@ public class UserProfile {
     @Column(name = "user_profile_type")
     private UserProfileType userProfileType;
 
+    public UserProfile() {
+    }
+
+    public UserProfile(long id,String password, String firstName, String lastName, int age, String email, String profileImagePath, Date createdAt, UserProfileType userProfileType) {
+        this.id = id;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.email = email;
+        this.profileImagePath = profileImagePath;
+        this.createdAt = createdAt;
+        this.userProfileType = userProfileType;
+    }
+
+    public UserProfile(String password, String firstName, String lastName, int age, String email, String profileImagePath, Date createdAt, UserProfileType userProfileType) {
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.email = email;
+        this.profileImagePath = profileImagePath;
+        this.createdAt = createdAt;
+        this.userProfileType = userProfileType;
+    }
+
     public Long getId() {
         return id;
     }
