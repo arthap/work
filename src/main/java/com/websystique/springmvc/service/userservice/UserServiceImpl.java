@@ -1,7 +1,9 @@
 package com.websystique.springmvc.service.userservice;
 
 import com.websystique.springmvc.dao.userdao.UserDao;
+import com.websystique.springmvc.dao.userdao.UserDaoImpl;
 import com.websystique.springmvc.model.UserProfile;
+import com.websystique.springmvc.model.enums.UserProfileType;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +12,9 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sevak on 9/10/17.
@@ -30,8 +34,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserProfile getById(Long id) {
-        return userDao.getById(id);
+    public ResponseEntity<UserProfile> getById(Long id) {
+        return new ResponseEntity<UserProfile>(userDao.getById(id),HttpStatus.OK);
     }
 
     @Override
@@ -51,19 +55,19 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public ResponseEntity<UserProfile> delete(Long id) {
-        UserProfile userProfile = getById(id);
+        ResponseEntity<UserProfile> userProfile = getById(id);
         if (userProfile == null) {
             logger.debug("Unable to delete. User with id " + id + " not found");
             return new ResponseEntity<UserProfile>(HttpStatus.NOT_FOUND);
         }
-        userDao.deleteUserProfile(userProfile);
+        userDao.deleteUserProfile(userProfile.getBody());
         return new ResponseEntity<UserProfile>(HttpStatus.NO_CONTENT);
     }
 
     @Override
     @Transactional
     public ResponseEntity<UserProfile> update(Long id, UserProfile userProfile) {
-        UserProfile currentUserProfile = getById(id);
+        ResponseEntity<UserProfile> currentUserProfile = getById(id);
         if (currentUserProfile == null) {
             logger.debug("Unable to update. User with id " + id + " not found");
             return new ResponseEntity<UserProfile>(HttpStatus.NOT_FOUND);

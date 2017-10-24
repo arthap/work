@@ -14,7 +14,7 @@ public interface UserService {
 
      void create(UserProfile userProfile);
 
-     UserProfile getById(Long id);
+     ResponseEntity<UserProfile> getById(Long id);
 
      UserProfile getUserByEmail(String email);
 

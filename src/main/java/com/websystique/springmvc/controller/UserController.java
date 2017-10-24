@@ -2,6 +2,7 @@ package com.websystique.springmvc.controller;
 
 import com.websystique.springmvc.model.UserProfile;
 import com.websystique.springmvc.service.userservice.UserService;
+import com.websystique.springmvc.service.userservice.UserServiceImpl;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.apache.log4j.Logger;
@@ -35,18 +36,17 @@ public class UserController {
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/users/{id}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @RequestMapping(value = "/users/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
     @ApiOperation(value = "Get User profile by Id", notes = "get user profile by id")
     public ResponseEntity<UserProfile> getUser(
             @ApiParam(value = "id of user profile", required = true)
             @PathVariable("id") Long id) {
 
-        UserProfile byId = userService.getById(id);
-        return new ResponseEntity<UserProfile>(byId, HttpStatus.OK);
+        return userService.getById(id);
     }
 
     @ApiOperation(value = "Get all user profiles", notes = "${ArticleController.getArticleById.notes}")
-    @RequestMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @RequestMapping(value = "/users", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
     public ResponseEntity<List<UserProfile>> getUser() {
         return userService.getAll();
     }
@@ -64,9 +64,9 @@ public class UserController {
     @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
     public ResponseEntity<UserProfile> updateUser(
             @ApiParam(value = "id of user profile", required = true)
-            @PathVariable("id") long id,@RequestBody UserProfile userProfile) {
+            @PathVariable("id") long id, @RequestBody UserProfile userProfile) {
         log.debug("Updating User with id " + id);
-        return userService.update(id,userProfile);
+        return userService.update(id, userProfile);
     }
 
 }
